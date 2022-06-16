@@ -1,0 +1,11 @@
+.test{
+    height: 4rem;
+    display: grid;
+    grid-auto-flow:column;
+    background-color: #0077b6;
+    
+}
+
+.nav__buttons {
+    font-size: 2rem;
+}
