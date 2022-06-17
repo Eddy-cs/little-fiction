@@ -1,7 +1,7 @@
 import { Fragment } from "react";
 
 function StoryList(props) {
-  const list = props.stories.map((e) => <h1 key={e}>{e}</h1>);
+  const list = props.stories.map((e) => <h1 key={e.id}>{e.story}</h1>);
   console.log(list);
 
   return (

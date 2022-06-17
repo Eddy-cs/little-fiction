@@ -4,3 +4,8 @@
 //make graphics for the best stories
 //ask st for a robot icon
 //make stanlee share his stories
+
+--------Refacttoring
+//Change fetch to async await
+//Check firebase database to private 
+//Organize funcitions to corresponding components after nextjs organization
