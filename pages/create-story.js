@@ -7,15 +7,32 @@ import { useRef } from "react";
 
 function CreateStory() {
   const topicRef = useRef();
+  const themeRef = useRef();
+
+  function submitHandler(event) {
+    event.preventDefault();
+
+    const enteredTopic = topicRef.current.value;
+    const enteredTheme = themeRef.current.value;
+
+    const storyData = {
+      topic: enteredTopic,
+      theme: enteredTheme,
+    };
+    console.log(storyData);
+  }
 
   return (
     <Fragment>
       <NavbarLayout />
-      <h1>Create a story!!</h1>
-      <h1>Topic</h1>
-      <input ref={topicRef} type="text" />
-      <h1>Theme</h1>
-      <input type="text" />
+      <form onSubmit={submitHandler}>
+        <h1>Create a story!!</h1>
+        <label>Topic</label>
+        <input required id="topic" ref={topicRef} type="text" />
+        <label>Theme</label>
+        <input required id="theme" ref={themeRef} type="text" />
+        <button>Send</button>
+      </form>
     </Fragment>
   );
 }

@@ -5,10 +5,16 @@ import NavbarLayout from "../components/Navbar";
 import StoryList from "../components/StoryList";
 
 function HomePage() {
-  const [stories, setStories] = useState({
-    id: 1,
-    story: "This is a dummy story 1",
-  });
+  const [stories, setStories] = useState([
+    {
+      id: 1,
+      story: "This is a dummy story 1",
+    },
+    {
+      id: 2,
+      story: "This is a dummy story 2",
+    },
+  ]);
 
   return (
     <Fragment>
