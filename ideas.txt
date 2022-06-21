@@ -9,3 +9,5 @@
 //Change fetch to async await
 //Check firebase database to private 
 //Organize funcitions to corresponding components after nextjs organization
+//Fix navbar component naming to NavbarLayout
+//Replace "" with ''
