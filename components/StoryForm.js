@@ -35,8 +35,7 @@ function StoryForm(props) {
     setResult(data.result);
     console.log(data.result);
     //
-
-    // props.onAddStory(storyData);
+    props.onAddStory(data.result);
   }
 
   return (

@@ -5,9 +5,10 @@
 //ask st for a robot icon
 //make stanlee share his stories
 
---------Refacttoring
+--------Refactoring
 //Change fetch to async await
 //Check firebase database to private 
 //Organize funcitions to corresponding components after nextjs organization
 //Fix navbar component naming to NavbarLayout
-//Replace "" with ''
+//Reaserch proper practices of passing data between sibling components
+//Add try-catch to async funcitions
