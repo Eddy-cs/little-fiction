@@ -1,7 +1,6 @@
 //Main page displaying all stories
 import { Fragment, useEffect } from "react";
 import { useState } from "react";
-import NavbarLayout from "../components/Navbar";
 import StoryList from "../components/StoryList";
 
 function HomePage() {
@@ -34,7 +33,6 @@ function HomePage() {
   }, []);
   return (
     <Fragment>
-      <NavbarLayout />
       {isLoading === true ? (
         <StoryList stories={stories} />
       ) : (
