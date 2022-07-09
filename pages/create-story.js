@@ -1,5 +1,4 @@
 import { Fragment } from "react";
-import NavbarLayout from "../components/Navbar";
 import StoryForm from "../components/StoryForm";
 
 function CreateStory() {
@@ -15,7 +14,6 @@ function CreateStory() {
 
   return (
     <Fragment>
-      <NavbarLayout />
       <StoryForm onAddStory={storeStoryHandler} />
     </Fragment>
   );

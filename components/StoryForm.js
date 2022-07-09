@@ -1,8 +1,7 @@
-//Create a new story
-//Add new story to main page
-
 import { Fragment, useState } from "react";
 import { useRef } from "react";
+import { TextField, Button } from "@mui/material";
+import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
 
 function StoryForm(props) {
   const topicRef = useRef();
@@ -40,13 +39,17 @@ function StoryForm(props) {
 
   return (
     <Fragment>
-      <form onSubmit={submitHandler}>
+      <form autoComplete="off" onSubmit={submitHandler}>
         <h1>Create a story!!</h1>
-        <label>Topic</label>
-        <input required id="topic" ref={topicRef} type="text" />
-        <label>Theme</label>
-        <input required id="theme" ref={themeRef} type="text" />
-        <button>Send</button>
+        <TextField required inputRef={topicRef} label="Topic" />
+        <TextField required inputRef={themeRef} label="Theme" />
+        <Button
+          variant="contained"
+          type="submit"
+          endIcon={<ArrowForwardIcon />}
+        >
+          Create
+        </Button>
       </form>
       {/* Temporary display for API result */}
       <div>{result}</div>

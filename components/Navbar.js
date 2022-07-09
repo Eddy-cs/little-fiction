@@ -1,20 +1,21 @@
 import styles from "./Navbar.module.css";
 import { Fragment } from "react";
 import Link from "next/link";
+import { Button } from "@mui/material";
 
 function NavbarLayout() {
   return (
     <Fragment>
-      <div className={styles.test}>
+      <div>
         <img></img>
         <Link href="/">
-          <span className={styles.nav__buttons}>All stories</span>
+          <Button variant="text">All stories</Button>
         </Link>
         <Link href="/create-story">
-          <span className={styles.nav__buttons}>Create story</span>
+          <Button variant="text">Create a story</Button>
         </Link>
         <Link href="/create-story">
-          <span className={styles.nav__buttons}>About</span>
+          <Button variant="text">About</Button>
         </Link>
       </div>
     </Fragment>
