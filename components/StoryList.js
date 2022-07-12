@@ -1,5 +1,6 @@
 import { Fragment } from "react";
 import { Card } from "@mui/material";
+import styles from "./StoryList.module.css";
 
 function StoryList(props) {
   const list = props.stories.map((e) => (
@@ -13,8 +14,10 @@ function StoryList(props) {
 
   return (
     <Fragment>
-      <h1>Here are all the stories:</h1>
-      <div>{list}</div>
+      <div className={styles.list__container}>
+        <h1>Here are all the stories:</h1>
+        <div className={styles.list__stories}>{list}</div>
+      </div>
     </Fragment>
   );
 }

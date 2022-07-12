@@ -1,0 +1,6 @@
+.grid {
+    display: grid;
+    place-content: center;
+    max-width: 1440px;
+    /* grid-template-columns: 2fr 10fr; */
+}

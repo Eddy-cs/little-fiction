@@ -1,0 +1,12 @@
+.list__stories{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 30px;
+}
+
+.list__container{
+    display: grid;
+    place-self: center;
+    padding: 0 50px;
+    max-width: 900px;
+}

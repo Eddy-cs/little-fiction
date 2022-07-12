@@ -1,7 +1,8 @@
 import { Fragment, useState } from "react";
 import { useRef } from "react";
-import { TextField, Button } from "@mui/material";
+import { TextField, Button, Card } from "@mui/material";
 import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
+import styles from "./StoryForm.module.css";
 
 function StoryForm(props) {
   const topicRef = useRef();
@@ -20,6 +21,8 @@ function StoryForm(props) {
       theme: enteredTheme,
     };
 
+    console.log(typeof enteredTheme);
+    console.log(typeof enteredTopic);
     console.log(storyData);
 
     //GPT-3 Code (async function added)
@@ -39,10 +42,12 @@ function StoryForm(props) {
 
   return (
     <Fragment>
-      <form autoComplete="off" onSubmit={submitHandler}>
+      <form className={styles.form__container} onSubmit={submitHandler}>
         <h1>Create a story!!</h1>
         <TextField required inputRef={topicRef} label="Topic" />
         <TextField required inputRef={themeRef} label="Theme" />
+        {/* <input type="text" ref={topicRef}></input>
+        <input type="text" ref={themeRef}></input> */}
         <Button
           variant="contained"
           type="submit"
@@ -52,7 +57,7 @@ function StoryForm(props) {
         </Button>
       </form>
       {/* Temporary display for API result */}
-      <div>{result}</div>
+      <Card>{result}</Card>
     </Fragment>
   );
 }
