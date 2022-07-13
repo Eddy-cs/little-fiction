@@ -1,6 +1,12 @@
-.grid {
-    display: grid;
-    place-content: center;
-    max-width: 1440px;
-    /* grid-template-columns: 2fr 10fr; */
+.layout__grid {
+  display: grid;
+  margin: auto;
+  max-width: 1000px;
+}
+
+.layout__ellipse {
+  position: absolute;
+  transform: translateX(-50vw);
+  left: 50%;
+  top: -150px;
 }

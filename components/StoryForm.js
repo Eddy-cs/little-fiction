@@ -21,10 +21,6 @@ function StoryForm(props) {
       theme: enteredTheme,
     };
 
-    console.log(typeof enteredTheme);
-    console.log(typeof enteredTopic);
-    console.log(storyData);
-
     //GPT-3 Code (async function added)
     const response = await fetch("/api/generate", {
       method: "POST",
@@ -49,6 +45,8 @@ function StoryForm(props) {
         {/* <input type="text" ref={topicRef}></input>
         <input type="text" ref={themeRef}></input> */}
         <Button
+          size="large"
+          sx={{ borderRadius: 5 }}
           variant="contained"
           type="submit"
           endIcon={<ArrowForwardIcon />}
@@ -57,7 +55,7 @@ function StoryForm(props) {
         </Button>
       </form>
       {/* Temporary display for API result */}
-      <Card>{result}</Card>
+      <Card height="500px">{result}</Card>
     </Fragment>
   );
 }

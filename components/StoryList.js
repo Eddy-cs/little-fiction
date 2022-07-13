@@ -4,13 +4,12 @@ import styles from "./StoryList.module.css";
 
 function StoryList(props) {
   const list = props.stories.map((e) => (
-    <Card key={e.id}>
+    <Card variant="outlined" key={e.id}>
       <h1>Title</h1>
       {e.story}
     </Card>
   ));
-  // const list = props.stories.map((e) => <h1>{e}</h1>);
-  // console.log(list);
+  // Add max height class to cards ---->sx={{maxHeight: 200}}
 
   return (
     <Fragment>

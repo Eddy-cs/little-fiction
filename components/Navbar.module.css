@@ -3,10 +3,11 @@
   place-self: center;
   /* place-content: center; */
   grid-auto-flow: column;
-  gap: 10px;
+  /* grid-template-columns: 1fr 1fr 1fr; */
+  width: 50%;
   background-color: rgba(217, 217, 217, 0.21);
-  width: fit-content;
   border-radius: 19px;
+  height: 65px;
 }
 
 .navbar__tittle {
