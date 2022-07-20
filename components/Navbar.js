@@ -1,14 +1,16 @@
 import styles from "./Navbar.module.css";
 import { Fragment } from "react";
 import Link from "next/link";
-import { Button } from "@mui/material";
+import { Button, Typography } from "@mui/material";
 
 function NavbarLayout() {
   return (
     <Fragment>
       <div className={styles.navbar__tittle}>
-        <h1>Little Fiction</h1>
-        <p>Create stories with the power of AI</p>
+        <Typography variant="h3">Little Fiction</Typography>
+        <Typography variant="h6">
+          Create stories with the power of AI
+        </Typography>
       </div>
       <div className={styles.navbar__buttons}>
         <Link href="/">

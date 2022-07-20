@@ -1,4 +1,23 @@
 .form__container {
   display: grid;
+  margin-top: 30px;
   gap: 30px;
+}
+
+.form__story {
+  min-height: 30vh;
+  padding: 1rem;
+  margin-top: 2rem;
+  background-color: rgb(249, 252, 253);
+}
+
+.form__button {
+  border-radius: 20px;
+  width: 40%;
+  min-width: 264px;
+  max-width: 650px;
+  position: absolute;
+  bottom: 3%;
+  left: 50%;
+  transform: translateX(-50%);
 }

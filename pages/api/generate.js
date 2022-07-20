@@ -9,10 +9,11 @@ export default async function (req, res) {
     model: "text-davinci-002",
     prompt: generatePrompt(req.body.topic, req.body.theme),
     temperature: 0.6,
+    max_tokens: 200,
   });
   res.status(200).json({ result: completion.data.choices[0].text });
 }
 
 function generatePrompt(topic, theme) {
-  return `This is a story made with the following ${topic} and ${theme}:`;
+  return `This is a story made with the topic "${topic}" and theme "${theme}":`;
 }

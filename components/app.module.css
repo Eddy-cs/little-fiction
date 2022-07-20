@@ -1,12 +1,13 @@
 .layout__grid {
   display: grid;
   margin: auto;
-  max-width: 1000px;
+  max-width: 1240px;
+  padding: 0 8%;
 }
 
 .layout__ellipse {
   position: absolute;
   transform: translateX(-50vw);
-  left: 50%;
-  top: -150px;
+  left: 25%;
+  top: -80px;
 }
