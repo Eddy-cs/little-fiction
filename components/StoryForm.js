@@ -58,21 +58,7 @@ function StoryForm(props) {
       </form>
       {/* Temporary display for API result */}
       <Card className={styles.form__story} variant="outlined">
-        <Typography variant="h5">
-          There once was a world that was full of cats. Every corner had a cat,
-          every street had a cat, and every house had at least one cat. The cats
-          were friendly and loved to play with each other. They would chase each
-          other around and nap in the sun. Everyone in the world loved the cats.
-          One day, a new family moved into the neighborhood and they had a dog.
-          The dog was not used to living with cats and would bark at them and
-          try to chase them. The cats didn't know what to do and were scared of
-          the dog. The family tried to keep the dog away from the cats, but it
-          was difficult. The dog would always find a way to get to the cats and
-          would chase them. The cats started to avoid the neighborhood and
-          stopped playing together. The world was not the same without the cats
-          and everyone missed them. One day, the family decided to move away and
-          the cats came back. They were {result}
-        </Typography>
+        <Typography variant="h5">{result}</Typography>
       </Card>
     </Fragment>
   );
