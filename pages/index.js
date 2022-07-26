@@ -1,36 +1,28 @@
 //Main page displaying all stories
-import { Fragment, useEffect } from "react";
-import { useState } from "react";
+import { Fragment, useEffect, useState } from "react";
 import StoryList from "../components/StoryList";
+import { db } from "./api/firebase-config";
+import { collection, getDocs } from "firebase/firestore";
 
 function HomePage() {
   const [stories, setStories] = useState();
   const [isLoading, setIsLoading] = useState(false);
+  const storiesCollectionRef = collection(db, "stories");
 
   useEffect(() => {
     async function getStories() {
-      const response = await fetch(
-        "https://nextjs-dummy-api-default-rtdb.firebaseio.com/stories.json"
-      );
-      const responseJSON = await response.json();
-
-      const storiesArray = [];
-      for (const key in responseJSON) {
-        const story = {
-          id: key,
-          story: responseJSON[key],
-        };
-        storiesArray.push(story);
-      }
-
-      setStories(storiesArray);
+      const data = await getDocs(storiesCollectionRef);
+      const dataObject = data.docs.map((doc) => ({
+        ...doc.data(),
+        id: doc.id,
+      }));
+      setStories(dataObject);
       setIsLoading(true);
-      console.log(responseJSON);
-      console.log(isLoading);
-      console.log(storiesArray);
     }
+    console.log([stories, "stories"]);
     getStories();
   }, []);
+
   return (
     <Fragment>
       {isLoading === true ? (

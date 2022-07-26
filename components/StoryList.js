@@ -3,9 +3,10 @@ import { Card } from "@mui/material";
 import styles from "./StoryList.module.css";
 
 function StoryList(props) {
+  console.log(props);
   const list = props.stories.map((e) => (
     <Card variant="outlined" key={e.id}>
-      <h1>Title</h1>
+      <h1>{e.title}</h1>
       {e.story}
     </Card>
   ));

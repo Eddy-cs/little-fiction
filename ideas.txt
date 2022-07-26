@@ -1,0 +1,15 @@
+//option to let people share their story
+//each story generates a dinamic link
+//expland top stories
+//make graphics for the best stories
+//ask st for a robot icon
+//make stanlee share his stories
+
+--------Refactoring
+//Load fonts from css file
+//Change fetch to async await
+//Check firebase database to private 
+//Organize funcitions to corresponding components after nextjs organization
+//Fix navbar component naming to NavbarLayout
+//Reaserch proper practices of passing data between sibling components
+//Add try-catch to async funcitions
