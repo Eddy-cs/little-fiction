@@ -2,8 +2,13 @@ import styles from "./Navbar.module.css";
 import { Fragment } from "react";
 import Link from "next/link";
 import { Button, Typography } from "@mui/material";
+import useMediaQuery from "@mui/material/useMediaQuery";
+import { useTheme } from "@mui/material/styles";
 
 function NavbarLayout() {
+  const theme = useTheme();
+  const matches = useMediaQuery(theme.breakpoints.down("sm"));
+
   return (
     <Fragment>
       <div className={styles.navbar__tittle}>
@@ -14,17 +19,17 @@ function NavbarLayout() {
       </div>
       <div className={styles.navbar__buttons}>
         <Link href="/">
-          <Button size="large" variant="text">
+          <Button size={matches ? "small" : "large"} variant="text">
             All stories
           </Button>
         </Link>
         <Link href="/create-story">
-          <Button size="large" variant="text">
+          <Button size={matches ? "small" : "large"} variant="text">
             Create a story
           </Button>
         </Link>
         <Link href="/create-story">
-          <Button size="large" variant="text">
+          <Button size={matches ? "small" : "large"} variant="text">
             About
           </Button>
         </Link>
