@@ -9,6 +9,7 @@ function StoryForm(props) {
   const themeRef = useRef();
   //Sets state for GPT-3 API result
   const [result, setResult] = useState();
+  const [title, setTitle] = useState();
 
   async function submitHandler(event) {
     event.preventDefault();
@@ -21,7 +22,6 @@ function StoryForm(props) {
       theme: enteredTheme,
     };
 
-    //GPT-3 Code (async function added)
     const response = await fetch("/api/generate", {
       method: "POST",
       headers: {
@@ -30,10 +30,16 @@ function StoryForm(props) {
       body: JSON.stringify(storyData),
     });
     const data = await response.json();
+    setTitle(`The ${enteredTopic} and The ${enteredTheme}`);
     setResult(data.result);
     console.log(data.result);
-    //
-    props.onAddStory(data.result);
+
+    const forDatabaseObject = {
+      story: data.result,
+      title: `The ${enteredTopic} and The ${enteredTheme}`,
+    };
+    console.log(forDatabaseObject);
+    props.onAddStory(forDatabaseObject);
   }
 
   return (
@@ -44,8 +50,6 @@ function StoryForm(props) {
         </Typography>
         <TextField required inputRef={topicRef} label="Topic" />
         <TextField required inputRef={themeRef} label="Theme" />
-        {/* <input type="text" ref={topicRef}></input>
-        <input type="text" ref={themeRef}></input> */}
         <Button
           className={styles.form__button}
           size="large"
@@ -56,8 +60,8 @@ function StoryForm(props) {
           Create
         </Button>
       </form>
-      {/* Temporary display for API result */}
       <Card className={styles.form__story} variant="outlined">
+        <Typography variant="h3">{title}</Typography>
         <Typography variant="h5">{result}</Typography>
       </Card>
     </Fragment>
