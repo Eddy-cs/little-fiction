@@ -1,25 +1,20 @@
 //Main page displaying all stories
 import { Fragment, useEffect, useState } from "react";
 import StoryList from "../components/StoryList";
-import { db } from "./api/firebase-config";
-import { collection, getDocs } from "firebase/firestore";
 
 function HomePage() {
   const [stories, setStories] = useState();
   const [isLoading, setIsLoading] = useState(false);
-  const storiesCollectionRef = collection(db, "stories");
 
   useEffect(() => {
     async function getStories() {
-      const data = await getDocs(storiesCollectionRef);
-      const dataObject = data.docs.map((doc) => ({
-        ...doc.data(),
-        id: doc.id,
-      }));
-      setStories(dataObject);
+      const response = await fetch("/api/firebase-config");
+      console.log(response);
+      const data = await response.json();
+      setStories(data);
+      console.log(data);
       setIsLoading(true);
     }
-    console.log([stories, "stories"]);
     getStories();
   }, []);
 

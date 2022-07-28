@@ -1,5 +1,5 @@
 import { initializeApp } from "firebase/app";
-import { getFirestore } from "@firebase/firestore";
+import { getFirestore, collection, addDoc, getDocs } from "@firebase/firestore";
 
 const firebaseConfig = {
   apiKey: process.env.FIREBASE_API_KEY,
@@ -18,5 +18,20 @@ const firebaseConfig = {
 };
 
 const app = initializeApp(firebaseConfig);
+const db = getFirestore(app);
+const storiesCollectionRef = collection(db, "stories");
 
-export const db = getFirestore(app);
+export default async function handler(req, res) {
+  if (req.method === "GET") {
+    const data = await getDocs(storiesCollectionRef);
+    const dataObject = data.docs.map((doc) => ({
+      ...doc.data(),
+      id: doc.id,
+    }));
+    res.status(200).json(dataObject);
+  } else if (req.method === "POST") {
+    const data = req.body;
+    await addDoc(storiesCollectionRef, data);
+    res.status(201).json(data);
+  }
+}
