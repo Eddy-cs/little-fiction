@@ -14,7 +14,7 @@ function NavbarLayout() {
       <div className={styles.navbar__tittle}>
         <Typography variant="h3">Little Fiction</Typography>
         <Typography variant="h6">
-          Create stories with the power of AI
+          Create little stories with the power of AI
         </Typography>
       </div>
       <div className={styles.navbar__buttons}>

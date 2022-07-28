@@ -9,13 +9,6 @@ function CreateStory() {
   async function storeStoryHandler(storyData) {
     console.log(storyData, "create-story");
     await addDoc(storiesCollectionRef, storyData);
-    // fetch("https://nextjs-dummy-api-default-rtdb.firebaseio.com/stories.json", {
-    //   method: "POST",
-    //   body: JSON.stringify(storyData),
-    //   headers: {
-    //     "Content-Type": "application/json",
-    //   },
-    // });
   }
 
   return (

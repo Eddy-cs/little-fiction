@@ -10,9 +10,11 @@ function StoryForm(props) {
   //Sets state for GPT-3 API result
   const [result, setResult] = useState();
   const [title, setTitle] = useState();
+  const [buttonLoad, setButtonLoad] = useState("contained");
 
   async function submitHandler(event) {
     event.preventDefault();
+    setButtonLoad("disabled");
 
     const enteredTopic = topicRef.current.value;
     const enteredTheme = themeRef.current.value;
@@ -29,15 +31,18 @@ function StoryForm(props) {
       },
       body: JSON.stringify(storyData),
     });
+
     const data = await response.json();
+
     setTitle(`The ${enteredTopic} and The ${enteredTheme}`);
     setResult(data.result);
-    console.log(data.result);
+    setButtonLoad("contained");
 
     const forDatabaseObject = {
       story: data.result,
       title: `The ${enteredTopic} and The ${enteredTheme}`,
     };
+
     console.log(forDatabaseObject);
     props.onAddStory(forDatabaseObject);
   }
@@ -53,7 +58,7 @@ function StoryForm(props) {
         <Button
           className={styles.form__button}
           size="large"
-          variant="contained"
+          variant={buttonLoad}
           type="submit"
           endIcon={<ArrowForwardIcon />}
         >
