@@ -8,14 +8,17 @@ function HomePage() {
 
   useEffect(() => {
     async function getStories() {
+      console.log("1");
       const response = await fetch("/api/firebase-config");
-      console.log(response);
+      console.log(response, "pre");
       const data = await response.json();
       setStories(data);
-      console.log(data);
+      console.log(data, "post");
       setIsLoading(true);
+      console.log("2");
     }
     getStories();
+    console.log("rendered");
   }, []);
 
   return (

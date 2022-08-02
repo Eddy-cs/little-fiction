@@ -12,7 +12,6 @@
 .navbar__tittle {
   margin: 60px 0;
   display: grid;
-  place-content: left;
 }
 
 @media (max-width: 500px) {
