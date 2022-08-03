@@ -21,8 +21,6 @@ export default async function (req, res) {
   };
 
   addData(storyData);
-  console.log(res);
-  console.log(completion.data.choices[0].text);
 }
 
 function generatePrompt(topic, theme) {

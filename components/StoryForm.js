@@ -4,7 +4,7 @@ import { TextField, Button, Card, Typography } from "@mui/material";
 import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
 import styles from "./StoryForm.module.css";
 
-function StoryForm(props) {
+function StoryForm() {
   const topicRef = useRef();
   const themeRef = useRef();
   //Sets state for GPT-3 API result
@@ -45,8 +45,18 @@ function StoryForm(props) {
         <Typography variant="h6">
           Type a topic and a theme in the bellow inputs to generate a story.
         </Typography>
-        <TextField required inputRef={topicRef} label="Topic" />
-        <TextField required inputRef={themeRef} label="Theme" />
+        <TextField
+          inputProps={{ maxLength: 12 }}
+          required
+          inputRef={topicRef}
+          label="Topic"
+        />
+        <TextField
+          inputProps={{ maxLength: 12 }}
+          required
+          inputRef={themeRef}
+          label="Theme"
+        />
         <Button
           className={styles.form__button}
           size="large"

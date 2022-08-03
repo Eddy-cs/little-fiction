@@ -2,6 +2,7 @@
 
 html,
 body {
+  background-color: rgba(242, 247, 255, 0.73);
   width: 100vw;
   overflow-x: hidden;
   padding: 0;

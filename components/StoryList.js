@@ -4,7 +4,7 @@ import styles from "./StoryList.module.css";
 
 function StoryList(props) {
   const list = props.stories.map((e) => (
-    <Card variant="outlined" key={e.id}>
+    <Card key={e.id}>
       <CardContent>
         <Typography variant="h4">{e.title}</Typography>
         <Typography variant="body1">{e.story}</Typography>

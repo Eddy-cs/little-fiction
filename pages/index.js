@@ -1,4 +1,3 @@
-//Main page displaying all stories
 import { Fragment, useEffect, useState } from "react";
 import StoryList from "../components/StoryList";
 
@@ -8,17 +7,12 @@ function HomePage() {
 
   useEffect(() => {
     async function getStories() {
-      console.log("1");
       const response = await fetch("/api/firebase-config");
-      console.log(response, "pre");
       const data = await response.json();
       setStories(data);
-      console.log(data, "post");
       setIsLoading(true);
-      console.log("2");
     }
     getStories();
-    console.log("rendered");
   }, []);
 
   return (

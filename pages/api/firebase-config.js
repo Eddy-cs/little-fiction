@@ -23,7 +23,6 @@ const storiesCollectionRef = collection(db, "stories");
 
 export default async function handler(req, res) {
   if (req.method === "GET") {
-    console.log("getDB");
     const data = await getDocs(storiesCollectionRef);
     const dataObject = data.docs.map((doc) => ({
       ...doc.data(),
