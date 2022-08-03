@@ -37,14 +37,6 @@ function StoryForm(props) {
     setTitle(`The ${enteredTopic} and The ${enteredTheme}`);
     setResult(data.result);
     setButtonLoad("contained");
-
-    const forDatabaseObject = {
-      story: data.result,
-      title: `The ${enteredTopic} and The ${enteredTheme}`,
-    };
-
-    console.log(forDatabaseObject);
-    props.onAddStory(forDatabaseObject);
   }
 
   return (
