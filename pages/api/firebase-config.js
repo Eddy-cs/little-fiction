@@ -1,5 +1,11 @@
 import { initializeApp } from "firebase/app";
-import { getFirestore, collection, addDoc, getDocs } from "@firebase/firestore";
+import {
+  getFirestore,
+  collection,
+  addDoc,
+  getDocs,
+  serverTimestamp,
+} from "@firebase/firestore";
 
 const firebaseConfig = {
   apiKey: process.env.FIREBASE_API_KEY,
@@ -21,7 +27,7 @@ const app = initializeApp(firebaseConfig);
 const db = getFirestore(app);
 const storiesCollectionRef = collection(db, "stories");
 
-export default async function handler(req, res) {
+export default async function getClientData(req, res) {
   if (req.method === "GET") {
     const data = await getDocs(storiesCollectionRef);
     const dataObject = data.docs.map((doc) => ({
@@ -33,5 +39,11 @@ export default async function handler(req, res) {
 }
 
 export function addData(storyData) {
-  addDoc(storiesCollectionRef, storyData);
+  addDoc(storiesCollectionRef, { ...storyData, timestamp: serverTimestamp() });
+}
+
+export async function getData() {
+  const data = await getDocs(storiesCollectionRef);
+  const response = data.docs.map((doc) => ({ ...doc.data(), id: doc.id }));
+  return response;
 }
