@@ -67,5 +67,5 @@ async function contenFilter(resp) {
 }
 
 function generatePrompt(topic, theme) {
-  return `This is a story made with the topic "${topic}" and theme "${theme}":`;
+  return `This is a creative children story made using the topics "${topic}" and "${theme}":`;
 }

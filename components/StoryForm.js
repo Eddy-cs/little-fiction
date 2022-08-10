@@ -42,20 +42,23 @@ function StoryForm() {
   return (
     <Fragment>
       <form className={styles.form__container} onSubmit={submitHandler}>
+        <Typography variant="h5">
+          Ignite your imagination by using two words to create a little story.
+        </Typography>
         <Typography variant="h6">
-          Type a topic and a theme in the bellow inputs to generate a story.
+          Please use two nouns to beggin. Example: "Turtle" and "Equipment".
         </Typography>
         <TextField
           inputProps={{ maxLength: 12 }}
           required
           inputRef={topicRef}
-          label="Topic"
+          label="Word 1"
         />
         <TextField
           inputProps={{ maxLength: 12 }}
           required
           inputRef={themeRef}
-          label="Theme"
+          label="Word 2"
         />
         <Button
           className={styles.form__button}

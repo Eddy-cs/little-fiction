@@ -11,7 +11,6 @@ function StoryList(props) {
       </CardContent>
     </Card>
   ));
-  // Add max height class to cards ---->sx={{maxHeight: 200}}
 
   return (
     <Fragment>
