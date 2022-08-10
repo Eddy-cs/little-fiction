@@ -1,6 +1,6 @@
 .list__stories {
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: 1fr 1fr 1fr;
   gap: 2vh;
 }
 
@@ -10,8 +10,25 @@
   gap: 1rem;
 }
 
-@media (max-width: 700px) {
+.list__img{
+  width: 100%;
+}
+.list__lines{
+  display: grid;
+  gap: .5rem;
+}
+
+@media (max-width: 850px) {
+  .list__stories {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media (max-width: 650px) {
   .list__stories {
     grid-template-columns: 1fr;
   }
+  /* .list__img{
+    height: 550px;
+  } */
 }
