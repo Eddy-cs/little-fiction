@@ -46,7 +46,7 @@ function StoryForm() {
           Ignite your imagination by using two words to create a little story.
         </Typography>
         <Typography variant="h6">
-          Please use two nouns to beggin. Example: "Turtle" and "Equipment".
+          Please use two nouns to begin. Example: "Turtle" and "Equipment".
         </Typography>
         <TextField
           inputProps={{ maxLength: 12 }}

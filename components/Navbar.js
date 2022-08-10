@@ -20,6 +20,11 @@ function NavbarLayout() {
       <div className={styles.navbar__buttons}>
         <Link href="/">
           <Button size={matches ? "small" : "large"} variant="text">
+            Favorites
+          </Button>
+        </Link>
+        <Link href="/all-stories">
+          <Button size={matches ? "small" : "large"} variant="text">
             All stories
           </Button>
         </Link>

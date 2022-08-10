@@ -25,8 +25,9 @@ export default async function openAiCreate(req, res) {
     const completion = await openai.createCompletion({
       model: "text-davinci-002",
       prompt: generatePrompt(req.body.topic, req.body.theme),
-      temperature: 0.6,
-      max_tokens: 200,
+      temperature: 0.8,
+      top_p: 1,
+      max_tokens: 350,
     });
     const response = completion.data.choices[0].text;
     const filterL = await contenFilter(response);
