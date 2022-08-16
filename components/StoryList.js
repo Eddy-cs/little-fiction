@@ -3,16 +3,19 @@ import { Card, CardContent, Typography } from "@mui/material";
 import styles from "./StoryList.module.css";
 
 function StoryList(props) {
-  function lineBrake(storyBr) {
+  function lineBrake(storyBlock) {
     let text = [];
-    storyBr.split("\n").forEach((element) => {
-      text.push(<div>{element}</div>);
-    });
-    console.log(text);
+    let paragraphs = storyBlock.split("\n");
+    for (let i = 0; i < paragraphs.length; i++) {
+      text.push(
+        <Typography key={i} variant="p">
+          {paragraphs[i]}
+        </Typography>
+      );
+    }
     return text;
   }
 
-  // console.log(props.stories[0].img);
   const list = props.stories.map((e) => (
     <Card key={e.id}>
       <CardContent>

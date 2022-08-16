@@ -70,3 +70,7 @@ async function contenFilter(resp) {
 function generatePrompt(topic, theme) {
   return `This is a creative children story made using the topics "${topic}" and "${theme}":`;
 }
+
+//If date requests === 30 > {Limit reached}
+//If user === null && date requests > 5 {Limit reached}
+//If user === true && date requests > 5 {Limit reached}
