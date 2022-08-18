@@ -14,7 +14,7 @@ function CreateStory() {
       ) : (
         <Button onClick={signInWithGoogle}>Sign in</Button>
       )}
-      <StoryForm />
+      <StoryForm userData={user || "null"} />
     </Fragment>
   );
 }
