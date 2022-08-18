@@ -7,36 +7,62 @@ const configuration = new Configuration({
 const openai = new OpenAIApi(configuration);
 let timestampMax = true;
 
-async function checkTimestamps() {
+async function checkTimestamps(userid) {
   const data = await getData();
   const today = new Date().toLocaleDateString();
-  const datesChecked = [];
+  let allRequests = 0;
+  let userRequests = 0;
+
   for (let d = 0; d < data.length; d++) {
-    const time = data[d].timestamp;
-    const date = new Date(time.seconds * 1000).toLocaleDateString("en-US");
-    date == today ? datesChecked.push(date) : null;
+    let time = data[d].timestamp;
+    let date = new Date(time.seconds * 1000).toLocaleDateString("en-US");
+    if (userid === "null") {
+      if (date == today) {
+        allRequests++;
+      }
+    } else {
+      if (date == today) {
+        allRequests++;
+      }
+      if (date == today && data[d].uid === userid) {
+        userRequests++;
+      }
+    }
   }
-  datesChecked.length > 15 ? (timestampMax = false) : null;
+
+  if (userid === "null") {
+    if (allRequests >= 7) {
+      timestampMax = false;
+    }
+  } else {
+    if (allRequests >= 10) {
+      timestampMax = false;
+    } else {
+      if (userRequests >= 5) {
+        timestampMax = false;
+      }
+    }
+  }
 }
 
 export default async function openAiCreate(req, res) {
-  await checkTimestamps();
+  await checkTimestamps(req.body.uid);
   if (timestampMax === true) {
     const completion = await openai.createCompletion({
       model: "text-davinci-002",
       prompt: generatePrompt(req.body.topic, req.body.theme),
       temperature: 0.8,
       top_p: 1,
-      max_tokens: 350,
+      max_tokens: 10,
     });
     const response = completion.data.choices[0].text;
     const filterL = await contenFilter(response);
 
-    console.log("filter", filterL);
     if (filterL == "0" || filterL == "1") {
       const storyData = {
         story: response,
         title: `The ${req.body.topic} and The ${req.body.theme}`,
+        uid: req.body.uid,
       };
       addData(storyData);
       res.status(200).json({ result: response });
@@ -48,7 +74,7 @@ export default async function openAiCreate(req, res) {
   } else {
     res.status(200).json({
       result:
-        "We're sorry, the maximum number of requests for today has been reached. Please try again later.",
+        "Sorry, the maximum number of requests for today has been reached. Please try again tomorrow.",
     });
   }
 }
@@ -68,9 +94,5 @@ async function contenFilter(resp) {
 }
 
 function generatePrompt(topic, theme) {
-  return `This is a creative children story made using the topics "${topic}" and "${theme}":`;
+  return `This is a creative story for children made using the topics "${topic}" and "${theme}":`;
 }
-
-//If date requests === 30 > {Limit reached}
-//If user === null && date requests > 5 {Limit reached}
-//If user === true && date requests > 5 {Limit reached}

@@ -4,7 +4,7 @@ import { TextField, Button, Card, Typography } from "@mui/material";
 import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
 import styles from "./StoryForm.module.css";
 
-function StoryForm() {
+function StoryForm(props) {
   const topicRef = useRef();
   const themeRef = useRef();
   //Sets state for GPT-3 API result
@@ -22,6 +22,7 @@ function StoryForm() {
     const storyData = {
       topic: enteredTopic,
       theme: enteredTheme,
+      uid: props.userData.uid || props.userData,
     };
 
     const response = await fetch("/api/generate", {
