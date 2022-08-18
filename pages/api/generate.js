@@ -31,11 +31,11 @@ async function checkTimestamps(userid) {
   }
 
   if (userid === "null") {
-    if (allRequests >= 7) {
+    if (allRequests >= 1) {
       timestampMax = false;
     }
   } else {
-    if (allRequests >= 10) {
+    if (allRequests >= 30) {
       timestampMax = false;
     } else {
       if (userRequests >= 5) {
@@ -74,7 +74,7 @@ export default async function openAiCreate(req, res) {
   } else {
     res.status(200).json({
       result:
-        "Sorry, the maximum number of requests for today has been reached. Please try again tomorrow.",
+        "Sorry, the maximum number of requests for today has been reached. Please sign in or try again tomorrow.",
     });
   }
 }

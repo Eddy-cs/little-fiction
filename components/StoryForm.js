@@ -35,8 +35,8 @@ function StoryForm(props) {
 
     const data = await response.json();
 
-    setTitle(`The ${enteredTopic} and The ${enteredTheme}`);
     setResult(data.result);
+    setTitle(`The ${enteredTopic} and The ${enteredTheme}`);
     setButtonLoad("contained");
   }
 
@@ -72,7 +72,12 @@ function StoryForm(props) {
         </Button>
       </form>
       <Card className={styles.form__story} variant="outlined">
-        <Typography variant="h3">{title}</Typography>
+        <Typography variant="h3">
+          {result ===
+          "Sorry, the maximum number of requests for today has been reached. Please sign in or try again tomorrow."
+            ? ""
+            : title}
+        </Typography>
         <Typography variant="h5">{result}</Typography>
       </Card>
     </Fragment>
