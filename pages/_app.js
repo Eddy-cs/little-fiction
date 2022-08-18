@@ -1,13 +1,13 @@
 import { Fragment } from "react";
-import NavbarLayout from "../components/Navbar";
 import styles from "../components/app.module.css";
 import "../styles/globals.css";
 import { ThemeProvider, createTheme } from "@mui/material/styles";
 import CssBaseline from "@mui/material/CssBaseline";
+import Navbar from "../components/Nav";
 
 const darkTheme = createTheme({
   palette: {
-    mode: "light",
+    mode: "dark",
   },
 });
 
@@ -16,9 +16,8 @@ function MyApp({ Component, pageProps }) {
     <Fragment>
       <ThemeProvider theme={darkTheme}>
         <CssBaseline />
-        <img className={styles.layout__ellipse} src={"/Ellipse1.png"}></img>
+        <Navbar />
         <div className={styles.layout__grid}>
-          <NavbarLayout />
           <Component {...pageProps} />
         </div>
       </ThemeProvider>

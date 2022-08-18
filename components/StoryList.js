@@ -19,7 +19,7 @@ function StoryList(props) {
   const list = props.stories.map((e) => (
     <Card key={e.id}>
       <CardContent>
-        <Typography variant="h4">{e.title}</Typography>
+        <Typography variant="h5">{e.title}</Typography>
       </CardContent>
       {e.img != undefined ? (
         <img className={styles.list__img} src={e.img} alt={e.alt}></img>
