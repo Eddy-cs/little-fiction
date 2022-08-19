@@ -5,9 +5,17 @@ const configuration = new Configuration({
   apiKey: process.env.OPENAI_API_KEY,
 });
 const openai = new OpenAIApi(configuration);
-let timestampMax = true;
 
-async function checkTimestamps(userid) {
+let allowRequest = true;
+
+function checkRequestLength(reqTopic, reqTheme) {
+  console.log(reqTheme.length, reqTopic.length);
+  if (reqTopic.length > 15 || reqTheme.length > 15) {
+    allowRequest = false;
+  }
+}
+
+async function checkRequestMax(userid) {
   const data = await getData();
   const today = new Date().toLocaleDateString();
   let allRequests = 0;
@@ -32,22 +40,23 @@ async function checkTimestamps(userid) {
 
   if (userid === "null") {
     if (allRequests >= 1) {
-      timestampMax = false;
+      allowRequest = false;
     }
   } else {
     if (allRequests >= 30) {
-      timestampMax = false;
+      allowRequest = false;
     } else {
       if (userRequests >= 5) {
-        timestampMax = false;
+        allowRequest = false;
       }
     }
   }
 }
 
 export default async function openAiCreate(req, res) {
-  await checkTimestamps(req.body.uid);
-  if (timestampMax === true) {
+  await checkRequestMax(req.body.uid);
+  checkRequestLength(req.body.topic, req.body.theme);
+  if (allowRequest === true) {
     const completion = await openai.createCompletion({
       model: "text-davinci-002",
       prompt: generatePrompt(req.body.topic, req.body.theme),
