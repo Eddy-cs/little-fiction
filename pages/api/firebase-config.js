@@ -7,18 +7,24 @@ import {
   serverTimestamp,
 } from "firebase/firestore";
 
-const firebaseConfig = {
+const firebaseConfigServer = {
   apiKey: process.env.FIREBASE_API_KEY,
-  authDomain: "little-fiction.firebaseapp.com",
-  projectId: "little-fiction",
-  storageBucket: "little-fiction.appspot.com",
-  messagingSenderId: "489385294877",
-  appId: "1:489385294877:web:0387e71cc07a529436daf4",
-  measurementId: "G-CVD3TDSZNS",
+
+  authDomain: "little-fiction-db.firebaseapp.com",
+
+  projectId: "little-fiction-db",
+
+  storageBucket: "little-fiction-db.appspot.com",
+
+  messagingSenderId: "575224040852",
+
+  appId: "1:575224040852:web:c966d9b16ca85711191381",
+
+  measurementId: "G-HM6J59Y6KS",
 };
 
-const app = initializeApp(firebaseConfig);
-const db = getFirestore(app);
+const appTwo = initializeApp(firebaseConfigServer, "serverConfig");
+const db = getFirestore(appTwo);
 const storiesCollectionRef = collection(db, "stories");
 
 export default async function getClientData(req, res) {

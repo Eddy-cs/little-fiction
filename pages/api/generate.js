@@ -62,7 +62,7 @@ export default async function openAiCreate(req, res) {
       prompt: generatePrompt(req.body.topic, req.body.theme),
       temperature: 0.8,
       top_p: 1,
-      max_tokens: 10,
+      max_tokens: 250,
     });
     const response = completion.data.choices[0].text;
     const filterL = await contenFilter(response);
