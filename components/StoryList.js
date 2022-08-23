@@ -1,5 +1,6 @@
 import { Fragment } from "react";
 import { Card, CardContent, Typography } from "@mui/material";
+import Masonry from "@mui/lab/Masonry";
 import styles from "./StoryList.module.css";
 
 function StoryList(props) {
@@ -8,7 +9,7 @@ function StoryList(props) {
     let paragraphs = storyBlock.split("\n");
     for (let i = 0; i < paragraphs.length; i++) {
       text.push(
-        <Typography key={i} variant="p">
+        <Typography key={i} variant="body1">
           {paragraphs[i]}
         </Typography>
       );
@@ -34,12 +35,16 @@ function StoryList(props) {
 
   return (
     <Fragment>
-      <div className={styles.list__container}>
-        <Typography pl={2} variant="h4">
-          {props.pageTitle}
-        </Typography>
-        <div className={styles.list__stories}>{list}</div>
-      </div>
+      <Typography p={2} variant="h4">
+        {props.pageTitle}
+      </Typography>
+      <Masonry columns={{ xs: 2, md: 3 }} spacing={2}>
+        {list.map((list, index) => (
+          <div key={index} sx={{ list }}>
+            {list}
+          </div>
+        ))}
+      </Masonry>
     </Fragment>
   );
 }

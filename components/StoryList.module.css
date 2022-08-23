@@ -1,34 +1,9 @@
-.list__stories {
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
-  gap: 2vh;
-}
-
-.list__container{
-  margin-top: 1rem;
-  display: grid;
-  gap: 1rem;
-}
 
 .list__img{
   width: 100%;
 }
+
 .list__lines{
   display: grid;
   gap: .5rem;
-}
-
-@media (max-width: 850px) {
-  .list__stories {
-    grid-template-columns: 1fr 1fr;
-  }
-}
-
-@media (max-width: 650px) {
-  .list__stories {
-    grid-template-columns: 1fr;
-  }
-  /* .list__img{
-    height: 550px;
-  } */
 }
