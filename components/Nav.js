@@ -120,7 +120,6 @@ export default function Navbar(props) {
           </Box>
           <Box
             sx={{
-              // display: { xs: "none", sm: "block" },
               padding: 2.5,
               paddingRight: { xs: "none" },
             }}
