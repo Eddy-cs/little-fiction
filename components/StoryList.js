@@ -46,7 +46,7 @@ function StoryList(props) {
         {props.pageTitle}
       </Typography>
       <Masonry
-        defaultHeight={800}
+        defaultHeight={450}
         defaultColumns={2}
         defaultSpacing={1}
         columns={{ xs: 2, md: 3 }}
