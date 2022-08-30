@@ -1,5 +1,5 @@
 import { Fragment } from "react";
-import styles from "../components/app.module.css";
+import styles from "../styles/app.module.css";
 import "../styles/globals.css";
 import { ThemeProvider, createTheme } from "@mui/material/styles";
 import CssBaseline from "@mui/material/CssBaseline";
