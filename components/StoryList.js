@@ -45,13 +45,7 @@ function StoryList(props) {
       <Typography p={2} variant="h4">
         {props.pageTitle}
       </Typography>
-      <Masonry
-        defaultHeight={450}
-        defaultColumns={2}
-        defaultSpacing={1}
-        columns={{ xs: 2, md: 3 }}
-        spacing={2}
-      >
+      <Masonry columns={{ xs: 1, sm: 2, md: 3 }} spacing={2}>
         {list.map((list, index) => (
           <div key={index} sx={{ list }}>
             {list}
