@@ -2,8 +2,3 @@
 .list__img{
   width: 100%;
 }
-
-.list__lines{
-  display: grid;
-  gap: .5rem;
-}

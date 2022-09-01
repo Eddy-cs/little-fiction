@@ -4,10 +4,9 @@ import { TextField, Button, Card, Typography } from "@mui/material";
 import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
 import styles from "./StoryForm.module.css";
 
-function StoryForm(props) {
+export default function StoryForm(props) {
   const topicRef = useRef();
   const themeRef = useRef();
-  //Sets state for GPT-3 API result
   const [result, setResult] = useState();
   const [title, setTitle] = useState();
   const [buttonLoad, setButtonLoad] = useState("contained");
@@ -35,6 +34,7 @@ function StoryForm(props) {
 
     const data = await response.json();
 
+    console.log(data.result);
     setResult(data.result);
     setTitle(`The ${enteredTopic} and The ${enteredTheme}`);
     setButtonLoad("contained");
@@ -72,16 +72,16 @@ function StoryForm(props) {
         </Button>
       </form>
       <Card className={styles.form__story} variant="outlined">
-        <Typography variant="h3">
+        <Typography variant="h4">
           {result ===
           "Sorry, the maximum number of requests for today has been reached. Please sign in or try again tomorrow."
             ? ""
             : title}
         </Typography>
-        <Typography variant="h5">{result}</Typography>
+        <Typography sx={{ whiteSpace: "pre-line" }} variant="body">
+          {result}
+        </Typography>
       </Card>
     </Fragment>
   );
 }
-
-export default StoryForm;

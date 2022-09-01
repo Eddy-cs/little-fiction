@@ -5,19 +5,6 @@ import Masonry from "@mui/lab/Masonry";
 import styles from "./StoryList.module.css";
 
 function StoryList(props) {
-  function lineBrake(storyBlock) {
-    let text = [];
-    let paragraphs = storyBlock.split("\n");
-    for (let i = 0; i < paragraphs.length; i++) {
-      text.push(
-        <Typography component={"span"} key={i} variant="body1">
-          {paragraphs[i]}
-        </Typography>
-      );
-    }
-    return text;
-  }
-
   const list = props.stories.map((e) => (
     <Card key={e.id}>
       <CardContent>
@@ -33,8 +20,8 @@ function StoryList(props) {
         ></Image>
       ) : null}
       <CardContent>
-        <Typography className={styles.list__lines} variant="body1">
-          {lineBrake(e.story)}
+        <Typography sx={{ whiteSpace: "pre-line" }} variant="body1">
+          {e.story}
         </Typography>
       </CardContent>
     </Card>
