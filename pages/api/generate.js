@@ -39,7 +39,7 @@ async function checkRequestMax(userid) {
   }
 
   if (userid === "null") {
-    if (allRequests >= 1) {
+    if (allRequests >= 10) {
       allowRequest = false;
     }
   } else {
@@ -60,9 +60,9 @@ export default async function openAiCreate(req, res) {
     const completion = await openai.createCompletion({
       model: "text-davinci-002",
       prompt: generatePrompt(req.body.topic, req.body.theme),
-      temperature: 0.8,
+      temperature: 0.85,
       top_p: 1,
-      max_tokens: 250,
+      max_tokens: 600,
     });
     const response = completion.data.choices[0].text;
     const filterL = await contenFilter(response);
@@ -103,5 +103,5 @@ async function contenFilter(resp) {
 }
 
 function generatePrompt(topic, theme) {
-  return `This is a creative story for children made using the topics "${topic}" and "${theme}":`;
+  return `Award winning science fiction story, written by using the topics "${topic}" and "${theme}":\n by Nathan K. Rose\n\n`;
 }
