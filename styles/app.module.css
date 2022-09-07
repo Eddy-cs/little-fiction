@@ -1,4 +1,5 @@
 .layout__grid {
+  min-height: 500px;
   display: grid;
   margin: auto;
   margin-top: 6rem;

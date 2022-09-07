@@ -9,7 +9,6 @@ const openai = new OpenAIApi(configuration);
 let allowRequest = true;
 
 function checkRequestLength(reqTopic, reqTheme) {
-  console.log(reqTheme.length, reqTopic.length);
   if (reqTopic.length > 15 || reqTheme.length > 15) {
     allowRequest = false;
   }

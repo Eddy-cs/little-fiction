@@ -4,6 +4,7 @@ import "../styles/globals.css";
 import { ThemeProvider, createTheme } from "@mui/material/styles";
 import CssBaseline from "@mui/material/CssBaseline";
 import Navbar from "../components/Nav";
+import Footer from "../components/Footer";
 
 const muiTheme = createTheme({
   palette: {
@@ -20,6 +21,7 @@ function MyApp({ Component, pageProps }) {
         <div className={styles.layout__grid}>
           <Component {...pageProps} />
         </div>
+        <Footer></Footer>
       </ThemeProvider>
     </Fragment>
   );
