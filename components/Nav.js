@@ -112,7 +112,7 @@ export default function Navbar(props) {
                 Create
               </Button>
             </Link>
-            <Link href="/create-story">
+            <Link href="/about">
               <Button sx={{ color: "#fff" }} variant="text">
                 About
               </Button>
