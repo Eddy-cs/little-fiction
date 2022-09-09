@@ -18,7 +18,7 @@ export default function Footer() {
           Created by Eddy S.
         </Typography>
         <div className={styles.social}>
-          <a href="https://github.com/Eddy-cs" target="_blank">
+          <a href="https://github.com/Eddy-cs" target="_blank" rel="noreferrer">
             <IconButton>
               <GitHubIcon color="primary" fontSize="medium" />
             </IconButton>
@@ -26,12 +26,17 @@ export default function Footer() {
           <a
             href="https://www.linkedin.com/in/eddy-s-a6661a23a/"
             target="_blank"
+            rel="noreferrer"
           >
             <IconButton>
               <LinkedInIcon color="primary" fontSize="medium" />
             </IconButton>
           </a>
-          <a href="https://eddysanchez.netlify.app/" target="_blank">
+          <a
+            href="https://eddysanchez.netlify.app/"
+            target="_blank"
+            rel="noreferrer"
+          >
             <IconButton>
               <WysiwygIcon color="primary" fontSize="medium" />
             </IconButton>
