@@ -8,8 +8,8 @@ const openai = new OpenAIApi(configuration);
 
 let allowRequest = true;
 
-function checkRequestLength(reqTopic, reqTheme) {
-  if (reqTopic.length > 15 || reqTheme.length > 15) {
+function checkRequestLength(reqGenre, reqTopic, reqTheme) {
+  if (reqGenre.length > 18 || reqTopic.length > 18 || reqTheme.length > 18) {
     allowRequest = false;
   }
 }
@@ -54,11 +54,11 @@ async function checkRequestMax(userid) {
 
 export default async function openAiCreate(req, res) {
   await checkRequestMax(req.body.uid);
-  checkRequestLength(req.body.topic, req.body.theme);
+  checkRequestLength(req.body.genre, req.body.topic, req.body.theme);
   if (allowRequest === true) {
     const completion = await openai.createCompletion({
       model: "text-davinci-002",
-      prompt: generatePrompt(req.body.topic, req.body.theme),
+      prompt: generatePrompt(req.body.genre, req.body.topic, req.body.theme),
       temperature: 0.85,
       top_p: 1,
       max_tokens: 600,
@@ -68,9 +68,10 @@ export default async function openAiCreate(req, res) {
 
     if (filterL == "0" || filterL == "1") {
       const storyData = {
-        story: response,
-        title: `The ${req.body.topic} and The ${req.body.theme}`,
         uid: req.body.uid,
+        genre: req.body.genre,
+        title: `The ${req.body.topic} and The ${req.body.theme}`,
+        story: response,
       };
       addData(storyData);
       res.status(200).json({ result: response });
@@ -101,6 +102,6 @@ async function contenFilter(resp) {
   return filterResponse.data["choices"][0]["text"];
 }
 
-function generatePrompt(topic, theme) {
-  return `Award winning science fiction story, written by using the topics "${topic}" and "${theme}":\n by Nathan K. Rose\n\n`;
+function generatePrompt(genre, topic, theme) {
+  return `Award winning ${genre} story, written by using the topics "${topic}" and "${theme}":\n by Nathan K. Rose\n\n`;
 }

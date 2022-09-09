@@ -33,7 +33,7 @@ export default async function getClientData(req, res) {
 }
 
 export function addData(storyData) {
-  addDoc(storiesCollectionRef, { ...storyData, timestamp: serverTimestamp() });
+  addDoc(storiesCollectionRef, { timestamp: serverTimestamp(), ...storyData });
 }
 
 export async function getData() {

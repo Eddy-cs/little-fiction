@@ -1,15 +1,29 @@
-import { Fragment, useState } from "react";
-import { useRef } from "react";
-import { TextField, Button, Card, Typography } from "@mui/material";
+import { Fragment, useState, useRef } from "react";
+import {
+  TextField,
+  Button,
+  Card,
+  Typography,
+  MenuItem,
+  Select,
+  FormControl,
+  InputLabel,
+} from "@mui/material";
 import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
 import styles from "./StoryForm.module.css";
 
 export default function StoryForm(props) {
+  const [genre, setGenre] = useState("");
   const topicRef = useRef();
   const themeRef = useRef();
   const [result, setResult] = useState();
   const [title, setTitle] = useState();
   const [buttonLoad, setButtonLoad] = useState("contained");
+
+  const handleChange = (event) => {
+    setGenre(event.target.value);
+    console.log(genre);
+  };
 
   async function submitHandler(event) {
     event.preventDefault();
@@ -19,9 +33,10 @@ export default function StoryForm(props) {
     const enteredTheme = themeRef.current.value;
 
     const storyData = {
+      uid: props.userData.uid || props.userData,
       topic: enteredTopic,
       theme: enteredTheme,
-      uid: props.userData.uid || props.userData,
+      genre: genre,
     };
 
     const response = await fetch("/api/generate", {
@@ -44,10 +59,8 @@ export default function StoryForm(props) {
     <Fragment>
       <form className={styles.form__container} onSubmit={submitHandler}>
         <Typography variant="h5">
-          Ignite your imagination by using two words to create a little story.
-        </Typography>
-        <Typography variant="h6">
-          Please use two nouns to begin. Example: Robot and Tree.
+          Ignite your imagination by using two words and a story genre to create
+          a little story.
         </Typography>
         <TextField
           inputProps={{ maxLength: 12 }}
@@ -61,6 +74,37 @@ export default function StoryForm(props) {
           inputRef={themeRef}
           label="Word 2"
         />
+        <FormControl>
+          <InputLabel id="demo">Genre</InputLabel>
+          <Select
+            value={genre}
+            labelId="demo"
+            id="sdfs"
+            label="Genre"
+            required
+            onChange={handleChange}
+          >
+            <MenuItem value={"children"}>Children story</MenuItem>
+            <MenuItem value={"science fiction"}>Sci-fi</MenuItem>
+            <MenuItem value={"mystery"}>Mystery</MenuItem>
+            <MenuItem value={"romance"}>Romance</MenuItem>
+            <MenuItem value={"horror"}>Horror</MenuItem>
+          </Select>
+        </FormControl>
+        {/* <FormControl fullWidth>
+          <InputLabel id="demo-simple-select-label">Age</InputLabel>
+          <Select
+            labelId="demo-simple-select-label"
+            id="demo-simple-select"
+            value={genre}
+            label="Age"
+            onChange={handleChange}
+          >
+            <MenuItem value={10}>Ten</MenuItem>
+            <MenuItem value={20}>Twenty</MenuItem>
+            <MenuItem value={30}>Thirty</MenuItem>
+          </Select>
+        </FormControl> */}
         <Button
           className={styles.form__button}
           size="large"
