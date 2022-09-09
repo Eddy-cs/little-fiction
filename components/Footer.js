@@ -9,7 +9,7 @@ export default function Footer() {
   return (
     <Fragment>
       <Divider></Divider>
-      <div className={styles.grid}>
+      <footer className={styles.grid}>
         <Typography
           sx={{ fontWeight: "light" }}
           variant="p"
@@ -37,7 +37,7 @@ export default function Footer() {
             </IconButton>
           </a>
         </div>
-      </div>
+      </footer>
     </Fragment>
   );
 }

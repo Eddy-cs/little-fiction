@@ -14,7 +14,7 @@ import Toolbar from "@mui/material/Toolbar";
 import Typography from "@mui/material/Typography";
 import Button from "@mui/material/Button";
 import { useState } from "react";
-import { signInWithGoogle, auth } from "../components/Login";
+import { signInWithGoogle, auth } from "./Login";
 import { useAuthState } from "react-firebase-hooks/auth";
 
 const drawerWidth = 240;

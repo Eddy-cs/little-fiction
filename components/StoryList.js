@@ -2,7 +2,6 @@ import { Fragment } from "react";
 import Image from "next/image";
 import { Card, CardContent, Typography } from "@mui/material";
 import Masonry from "@mui/lab/Masonry";
-import styles from "./StoryList.module.css";
 
 function StoryList(props) {
   const list = props.stories.map((e) => (
@@ -11,13 +10,7 @@ function StoryList(props) {
         <Typography variant="h5">{e.title}</Typography>
       </CardContent>
       {e.img != undefined ? (
-        <Image
-          width={500}
-          height={500}
-          className={styles.list__img}
-          src={e.img}
-          alt={e.alt}
-        ></Image>
+        <Image width={500} height={500} src={e.img} alt={e.alt}></Image>
       ) : null}
       <CardContent>
         <Typography sx={{ whiteSpace: "pre-line" }} variant="body1">
