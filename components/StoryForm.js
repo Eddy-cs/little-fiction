@@ -33,7 +33,7 @@ export default function StoryForm(props) {
     const enteredTheme = themeRef.current.value;
 
     const storyData = {
-      uid: props.userData.uid,
+      uid: props.userData.uid || props.userData,
       topic: enteredTopic,
       theme: enteredTheme,
       genre: genre,
