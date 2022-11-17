@@ -34,6 +34,11 @@ export default function StoryForm(props) {
 
     const storyData = {
       uid: props.userData.uid || props.userData,
+      user: {
+        displayName: props.userData.displayName,
+        email: props.userData.email,
+        photoURL: props.userData.photoURL,
+      },
       topic: enteredTopic,
       theme: enteredTheme,
       genre: genre,
@@ -59,8 +64,8 @@ export default function StoryForm(props) {
     <Fragment>
       <form className={styles.form__container} onSubmit={submitHandler}>
         <Typography variant="h5">
-          Ignite your imagination by using two words and a story genre to create
-          a little story.
+          Ignite your imagination by using two words and a genre to create an AI
+          generated story.
         </Typography>
         <TextField
           inputProps={{ maxLength: 12 }}
@@ -84,27 +89,13 @@ export default function StoryForm(props) {
             required
             onChange={handleChange}
           >
-            <MenuItem value={"children"}>Children story</MenuItem>
+            <MenuItem value={"children story"}>Children story</MenuItem>
             <MenuItem value={"science fiction"}>Sci-fi</MenuItem>
             <MenuItem value={"mystery"}>Mystery</MenuItem>
             <MenuItem value={"romance"}>Romance</MenuItem>
             <MenuItem value={"horror"}>Horror</MenuItem>
           </Select>
         </FormControl>
-        {/* <FormControl fullWidth>
-          <InputLabel id="demo-simple-select-label">Age</InputLabel>
-          <Select
-            labelId="demo-simple-select-label"
-            id="demo-simple-select"
-            value={genre}
-            label="Age"
-            onChange={handleChange}
-          >
-            <MenuItem value={10}>Ten</MenuItem>
-            <MenuItem value={20}>Twenty</MenuItem>
-            <MenuItem value={30}>Thirty</MenuItem>
-          </Select>
-        </FormControl> */}
         <Button
           className={styles.form__button}
           size="large"

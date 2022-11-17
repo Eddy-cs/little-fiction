@@ -9,7 +9,7 @@ import Head from "next/head";
 
 const muiTheme = createTheme({
   palette: {
-    mode: "dark",
+    mode: "light",
   },
 });
 

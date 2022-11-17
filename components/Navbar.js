@@ -13,6 +13,7 @@ import MenuIcon from "@mui/icons-material/Menu";
 import Toolbar from "@mui/material/Toolbar";
 import Typography from "@mui/material/Typography";
 import Button from "@mui/material/Button";
+import Avatar from "@mui/material/Avatar";
 import { useState } from "react";
 import { signInWithGoogle, auth } from "./Login";
 import { useAuthState } from "react-firebase-hooks/auth";
@@ -27,6 +28,8 @@ export default function Navbar(props) {
   const handleDrawerToggle = () => {
     setMobileOpen(!mobileOpen);
   };
+
+  user ? console.log(user.photoURL) : null;
 
   const drawer = (
     <Box onClick={handleDrawerToggle} sx={{ textAlign: "center" }}>
@@ -134,6 +137,7 @@ export default function Navbar(props) {
               </Button>
             )}
           </Box>
+          <Avatar src={user ? user.photoURL : null}></Avatar>
         </Toolbar>
       </AppBar>
       <Box component="nav">

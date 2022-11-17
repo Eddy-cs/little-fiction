@@ -70,6 +70,7 @@ export default async function openAiCreate(req, res) {
       const storyData = {
         uid: req.body.uid,
         genre: req.body.genre,
+        user: req.body.user,
         title: `The ${req.body.topic} and The ${req.body.theme}`,
         story: response,
       };
