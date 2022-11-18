@@ -67,18 +67,26 @@ export default function StoryForm(props) {
           Ignite your imagination by using two words and a genre to create an AI
           generated story.
         </Typography>
-        <TextField
-          inputProps={{ maxLength: 12 }}
-          required
-          inputRef={topicRef}
-          label="Word 1"
-        />
-        <TextField
-          inputProps={{ maxLength: 12 }}
-          required
-          inputRef={themeRef}
-          label="Word 2"
-        />
+        <div
+          style={{
+            display: "grid",
+            gridAutoFlow: "column",
+            gap: 30,
+          }}
+        >
+          <TextField
+            inputProps={{ maxLength: 12 }}
+            required
+            inputRef={topicRef}
+            label="Word 1"
+          />
+          <TextField
+            inputProps={{ maxLength: 12 }}
+            required
+            inputRef={themeRef}
+            label="Word 2"
+          />
+        </div>
         <FormControl>
           <InputLabel id="demo">Genre</InputLabel>
           <Select
