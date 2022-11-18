@@ -1,10 +1,10 @@
 import Link from "next/link";
+import Image from "next/image";
 import AppBar from "@mui/material/AppBar";
 import Box from "@mui/material/Box";
 import Divider from "@mui/material/Divider";
 import Drawer from "@mui/material/Drawer";
 import IconButton from "@mui/material/IconButton";
-import GestureIcon from "@mui/icons-material/Gesture";
 import List from "@mui/material/List";
 import ListItem from "@mui/material/ListItem";
 import ListItemButton from "@mui/material/ListItemButton";
@@ -84,9 +84,9 @@ export default function Navbar(props) {
           >
             <MenuIcon />
           </IconButton>
-          <GestureIcon sx={{ display: { xs: "none", md: "flex" }, mr: 1 }} />
+          <Image width={50} height={50} src={"/icon.svg"}></Image>
           <Typography
-            variant="h6"
+            variant="h5"
             component="div"
             sx={{ flexGrow: 1, display: { sm: "block" } }}
           >
