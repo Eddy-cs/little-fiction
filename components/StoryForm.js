@@ -64,8 +64,8 @@ export default function StoryForm(props) {
     <Fragment>
       <form className={styles.form__container} onSubmit={submitHandler}>
         <Typography variant="h5">
-          Ignite your imagination by using two words and a genre to create an AI
-          generated story.
+          Ignite your imagination by using two words and a genre to create an
+          story.
         </Typography>
         <div
           style={{
