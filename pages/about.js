@@ -11,13 +11,9 @@ export default function About() {
           Little fiction is a tool that sparks creativity.
         </Typography>
         <Typography>
-          This app uses the GPT-3 AI model to demonstrate a simple but
-          interesting use case of this powerful technology. If you are more
-          interested check the openAI website for more information.
-        </Typography>
-        <Typography>
-          DALLE-2 pictures are added manually to the favorite stories while
-          openAI releases an official API.
+          It is easy to use and help you write stories for fun or educational
+          purposes. You can use it to jumpstart a story or to simply encourage
+          creativity and collaboration.
         </Typography>
       </div>
       <div
@@ -30,9 +26,7 @@ export default function About() {
           right: 0,
           textAlign: "center",
         }}
-      >
-        <Image width={500} height={500} src={"/composition.png"}></Image>
-      </div>
+      ></div>
     </Fragment>
   );
 }
